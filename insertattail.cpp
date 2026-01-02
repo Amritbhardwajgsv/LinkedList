@@ -48,6 +48,20 @@ void print(Node *head){
     cout<<endl;
 
 }
+int searchpos(int value,Node* &head,Node* &tail){
+    Node *temp=head;
+    int pos=0;
+    while(temp!=NULL){
+        pos=pos+1;
+if(temp->data==value){
+    return pos;
+
+}
+temp=temp->next;
+    }
+    return -1;
+}
+
 int main(){
  Node *head=NULL;
  Node *tail=NULL;
@@ -62,6 +76,8 @@ insertattail(90,head,tail);
 print(head);
 insertatposition(57,2,head,tail);
 print(head);
+int k=searchpos(57,head,tail);
+cout<<k<<endl;
 
 
 
