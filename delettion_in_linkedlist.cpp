@@ -1,0 +1,121 @@
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data ;
+    Node *next;
+    // constructor()
+    Node(int value){
+        this->data=value;
+        this->next=NULL;
+    }
+ // no need delete key work se ho jaayega 
+};
+// insert at tail function 
+void insertattail(int value, Node* &head , Node* &tail){
+    if(head==NULL && tail==NULL ){
+        Node *newnode =new Node(value);
+        head=newnode;
+        tail=newnode;
+    }
+    else{
+Node *newnode=new Node(value);
+tail->next=newnode;
+tail=newnode;
+
+};
+}
+void insertatposition(int value,int pos,Node* &head,Node* &tail){
+    Node*temp=head;
+    for(int i=0;i<pos-2;i++){
+      temp=temp->next;
+    }
+    Node *newnode=new Node(value);
+    newnode->next=temp->next;
+    temp->next=newnode;
+
+}
+
+
+void print(Node *head){
+    // for this 
+    Node*temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<"->";
+        temp=temp->next;
+
+    }
+    cout<<endl;
+
+}
+int searchpos(int value,Node* &head,Node* &tail){
+    Node *temp=head;
+    int pos=0;
+    while(temp!=NULL){
+        pos=pos+1;
+if(temp->data==value){
+    return pos;
+
+}
+temp=temp->next;
+    }
+    return -1;
+}
+void deletioninlinkedlist(int pos,Node* &head,Node* &tail){
+
+    if(head==NULL && tail==NULL){
+      cout<<"deletion not possible";
+    }
+    else if(head==tail){
+        Node* temp=head;
+       head=NULL;
+       tail=NULL;
+       delete temp;
+    }
+    else{
+   
+        Node* temp=head;
+        for(int i=0;i<pos-2;i++){
+            temp=temp->next;
+        }
+        Node* current=temp->next;
+        
+        temp->next=current->next;
+        current=NULL;
+        delete current;
+
+        
+    }
+
+
+}
+
+int main(){
+ Node *head=NULL;
+ Node *tail=NULL;
+  
+insertattail(20,head,tail);
+print(head);
+insertattail(30,head,tail);
+print(head);
+insertattail(60,head,tail);
+print(head);
+insertattail(90,head,tail);
+print(head);
+insertatposition(57,2,head,tail);
+print(head);
+int k=searchpos(57,head,tail);
+cout<<k<<endl;
+deletioninlinkedlist(2,head,tail);
+print(head);
+deletioninlinkedlist(2,head,tail);
+print(head);
+deletioninlinkedlist(2,head,tail);
+print(head);
+deletioninlinkedlist(2,head,tail);
+print(head);
+deletioninlinkedlist(1,head,tail);
+print(head);
+
+
+}
