@@ -23,9 +23,20 @@ Node *newnode=new Node(value);
 tail->next=newnode;
 tail=newnode;
 
+};
 }
+void insertatposition(int value,int pos,Node* &head,Node* &tail){
+    Node*temp=head;
+    for(int i=0;i<pos-2;i++){
+      temp=temp->next;
+    }
+    Node *newnode=new Node(value);
+    newnode->next=temp->next;
+    temp->next=newnode;
 
 }
+
+
 void print(Node *head){
     // for this 
     Node*temp=head;
@@ -45,6 +56,13 @@ insertattail(20,head,tail);
 print(head);
 insertattail(30,head,tail);
 print(head);
+insertattail(60,head,tail);
+print(head);
+insertattail(90,head,tail);
+print(head);
+insertatposition(57,2,head,tail);
+print(head);
+
 
 
 }
